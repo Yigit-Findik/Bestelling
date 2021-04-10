@@ -41,8 +41,8 @@
             ?>
             <label>Email: </label><br>
             <?php
-            if (isset($_GET['achternaam'])){
-                if($_GET['achternaam'] == ""){
+            if (isset($_GET['email'])){
+                if($_GET['email'] == ""){
                     echo('<input style="border-color: red" type="text" id="mail" name="email" placeholder="voorbeeld@outlook.com"> <br>');
                 }
                 else {
@@ -55,8 +55,8 @@
             ?>
             <label>Straat naam: </label><br>
             <?php
-            if (isset($_GET['achternaam'])){
-                if($_GET['achternaam'] == ""){
+            if (isset($_GET['straatnaam'])){
+                if($_GET['straatnaam'] == ""){
                     echo('<input style="border-color: red" type="text" id="snaam" name="straatnaam" placeholder="straatnaam"> <br>');
                 }
                 else {
@@ -127,7 +127,7 @@
 
             <!-- Gerechten -->
             <label>Gerechten: </label><br>
-            <select name="gerecht" id="">
+            <select name="gerecht">
                 <option value="Gehaktbal">Gehaktbal</option>
                 <option value="Frikandel">Frikandel</option>
                 <option value="Kapsalon" >Kapsalon</option>
@@ -164,7 +164,7 @@
     $voorraad = ["Gehaktbal", "Kip", "Water"];
 
     function bestellen() {
-        $bestelling = ["voornaam" => $_GET["voornaam"], "bestelling" => $_GET["gerecht"]];
+        $bestelling = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"bestelling" => $_GET["gerecht"],];
 
 
         //controlleEten($bestelling);
@@ -188,7 +188,7 @@
     if (isset($_GET["submit"])) {
         bestellen();
     }
-    
+
     //$name = $_POST["name"];
     //header("locatie");
     //die();
