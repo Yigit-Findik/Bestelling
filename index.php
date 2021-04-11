@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     error_reporting(E_ERROR | E_PARSE);
 ?>
 
@@ -159,10 +158,12 @@
             </div>
         </div>
 
+        <!-- Footer informatie en classes -->
         <div class="containerFOOTER">
             <h1 class="footerHEADER">Elegante kapsalon</h1>
         </div>
 
+        <!-- connectie met mijn javascript, echter heb ik deze niet gebruikt vanwegen volledig php gebruik -->
         <script src="scripts/js/main.js"></script>
     </body>
 </html>
@@ -174,15 +175,21 @@
     $voorraad = ["Gehaktbal", "Kip", "Water"];
 
     function bestellen() {
-        $bestelling = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
-        echo ("balzak Mikael Ainalem");
+        //$bestelling = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
+        echo ("debug test");
 
         $_SESSION = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
 
+        echo ($_SESSION[0]);
+        //if(!isset($_GET[$_SESSION[0]]) || empty($_GET[$_SESSION[0]])) {
+        //    header('location: /hire-us-phone.php');
+        //    exit;
+        //}
+
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            foreach ($bestelling as $value) {
-                if ($bestelling[$value] == "voornaam") {
-                    echo $bestelling[$value];
+            foreach ($_SESSION as $value) {
+                if ($_SESSION[$value] == "voornaam") {
+                    echo $_SESSION[$value];
                 }
 
             }
@@ -192,6 +199,7 @@
             }
             */
         }
+
 
         //var_dump($bestelling );
         //print_r($bestelling);
