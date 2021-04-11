@@ -169,6 +169,9 @@
 </html>
 
 <?php
+
+    $voorraad = ["Frikandel","Kapsalon", "Salar burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
+
     function bestellen() {
         echo ("debug test");
 
@@ -177,26 +180,11 @@
         if(!empty($_GET["voornaam"]) && !empty($_GET["achternaam"]) && !empty($_GET["email"]) && !empty($_GET["straatnaam"]) && !empty($_GET["huisnummer"]) && !empty($_GET["postcode"]) && !empty($_GET["woonplaats"]) && !empty($_GET["telefoonNummer"]) ) {
             header('location: overzicht.php');
         }
-
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            foreach ($_SESSION as $value) {
-                if ($_SESSION[$value] == "voornaam") {
-                    echo $_SESSION[$value];
-                }
-
-            }
-            /*
-            if($bestelling) {
-                header('location: overzicht.php');
-            }
-            */
-        }
-        var_dump($_SESSION);
     }
 
-    /*
+    //controlle
     function controlleVoorraad($bestelling){
-        $voorraad = ['Gehaktbal', 'Gehaktbal'];
+        $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
         foreach ($bestelling as $key => $value){
             if ($key == 'bestelling'){
                 if( in_array($value, $voorraad) ){
@@ -208,10 +196,22 @@
             }
         }
     }
-    */
+    //controlle V2
+    function controlleVoorraadV2() {
+        $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
+        if (!in_array($_SESSION["gerecht"], $voorraad) || !in_array($_SESSION["dranken"], $voorraad)) {
+            echo "Deze drank of gerecht is niet meer verkrijgbaar, sorry voor het ongemak! Dit is wel verkrijgbaar: "
+                . $voorraad[0] . ", " . $voorraad[1] . ", " . $voorraad[2] . ", " . $voorraad[3] . ", " . $voorraad[4]
+                . ", " . $voorraad[5] . ", " . $voorraad[6] . ", " . $voorraad[7] . ", " . $voorraad[8] . ", " . $voorraad[9] . ", " . $voorraad[10];
+        }
 
-    if (isset($_GET["submit"])) {
-        bestellen();
+        else if (in_array($_SESSION["gerecht"], $voorraad) && in_array($_SESSION["gerecht"], $voorraad)) {
+            bestellen();
+        }
+
     }
 
+    if (isset($_GET["submit"])) {
+        controlleVoorraadV2();
+    }
 ?>

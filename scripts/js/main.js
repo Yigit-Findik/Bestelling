@@ -15,7 +15,7 @@ function bababoey() {
 }
 
 document.getElementById("bestelID").onclick = function () {
-    location.href = "index.php";
+    location.href = "bedanktpagina.html";
 };
 
 document.getElementById("anuleerID").onclick = function () {

@@ -1,6 +1,3 @@
-/*
-Empty inside :( SIKE!!
-*/
 html, body {
     margin: 0px;
     padding: 0px;
@@ -48,6 +45,22 @@ html, body {
     padding-top: 30px;
     font-size: 75px;
     padding-left: 41%;
+    color: white;
+}
+
+.containerBEDANKT {
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(55, 112, 179);
+    text-align: center;
+}
+
+.bedanktTEXT {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 100px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 75px;
     color: white;
 }
 
