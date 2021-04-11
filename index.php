@@ -146,7 +146,7 @@
                     </select><br>
 
                 </form>
-                <button form="formID" value="jeff" onclick="bababoey()" name="submit">submit</button>
+                <button form="formID" value="submit" onclick="bababoey()" name="submit">submit</button>
 
                 <!-- <button onclick="bababoey()" name="submit">Submit</button> -->
                 <!-- <input onclick="bababoey()" type="submit" name="submit"> -->
@@ -169,22 +169,20 @@
 </html>
 
 <?php
-
-
-
-    $voorraad = ["Gehaktbal", "Kip", "Water"];
-
     function bestellen() {
         //$bestelling = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
         echo ("debug test");
 
         $_SESSION = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
 
-        echo ($_SESSION[0]);
         //if(!isset($_GET[$_SESSION[0]]) || empty($_GET[$_SESSION[0]])) {
         //    header('location: /hire-us-phone.php');
         //    exit;
         //}
+
+        if(!empty($_GET["voornaam"]) && !empty($_GET["achternaam"]) && !empty($_GET["email"]) && !empty($_GET["straatnaam"]) && !empty($_GET["huisnummer"]) && !empty($_GET["postcode"]) && !empty($_GET["woonplaats"]) && !empty($_GET["telefoonNummer"]) ) {
+            header('location: overzicht.php');
+        }
 
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             foreach ($_SESSION as $value) {
@@ -199,13 +197,10 @@
             }
             */
         }
-
-
-        //var_dump($bestelling );
-        //print_r($bestelling);
-        //controlleEten($bestelling);
+        var_dump($_SESSION);
     }
 
+    /*
     function controlleVoorraad($bestelling){
         $voorraad = ['Gehaktbal', 'Gehaktbal'];
         foreach ($bestelling as $key => $value){
@@ -219,6 +214,7 @@
             }
         }
     }
+    */
 
     if (isset($_GET["submit"])) {
         bestellen();
