@@ -129,7 +129,7 @@
                         <option value="Gehaktbal">Gehaktbal</option>
                         <option value="Frikandel">Frikandel</option>
                         <option value="Kapsalon" >Kapsalon</option>
-                        <option value="SBurger" >Salar burger</option>
+                        <option value="Salar Burger" >Salar burger</option>
                         <option value="Mexicano" >Mexicano</option>
                         <option value="Druif" >Druif</option>
                     </select><br>
@@ -138,7 +138,7 @@
                     <label>Dranken: </label><br>
                     <select name="dranken" id="">
                         <option value="Water">Water</option>
-                        <option value="CHMelk">Chocolade melk</option>
+                        <option value="Chocolade Melk">Chocolade melk</option>
                         <option value="Fristi">Fristi</option>
                         <option value="Cola">Cola</option>
                         <option value="Fanta">Fanta</option>
@@ -170,15 +170,9 @@
 
 <?php
     function bestellen() {
-        //$bestelling = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
         echo ("debug test");
 
         $_SESSION = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
-
-        //if(!isset($_GET[$_SESSION[0]]) || empty($_GET[$_SESSION[0]])) {
-        //    header('location: /hire-us-phone.php');
-        //    exit;
-        //}
 
         if(!empty($_GET["voornaam"]) && !empty($_GET["achternaam"]) && !empty($_GET["email"]) && !empty($_GET["straatnaam"]) && !empty($_GET["huisnummer"]) && !empty($_GET["postcode"]) && !empty($_GET["woonplaats"]) && !empty($_GET["telefoonNummer"]) ) {
             header('location: overzicht.php');
@@ -220,7 +214,4 @@
         bestellen();
     }
 
-    //$name = $_POST["name"];
-    //header("locatie");
-    //die();
 ?>

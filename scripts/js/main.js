@@ -13,3 +13,14 @@ function bababoey() {
         alert("voer alle gegevens correct in!");
     }
 }
+
+document.getElementById("bestelID").onclick = function () {
+    location.href = "index.php";
+};
+
+document.getElementById("anuleerID").onclick = function () {
+    location.href = "index.php";
+};
+
+
+
