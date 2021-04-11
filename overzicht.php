@@ -18,7 +18,7 @@
             <h1 class="headerCLASS">Bestelling</h1>
         </div>
 
-        <!-- debug -->
+        <!-- informatie van klant -->
         <div class="containerFORM">
             <div class="containerFORMINNER">
                 <?php
@@ -46,12 +46,13 @@
             <h1 class="footerOVERZICHT">Overzicht</h1>
         </div>
 
-        <!-- connectie met mijn javascript, echter heb ik deze niet gebruikt vanwegen volledig php gebruik -->
+        <!-- connectie met mijn javascript -->
         <script src="scripts/js/main.js"></script>
     </body>
 </html>
 
 <?php
+    //klanten worden ge emailed en de eigenaar ook als bestellen word geklikt, als anuleren word geklikt dan gaat hij terug naar bestel pagina
     $messageKlant = "Hallo, \r\n
                     Bij deze is hier uw bestelling met alle bij behorende informatie: \r\n
                           voornaam   : " . $_SESSION["voornaam"] .

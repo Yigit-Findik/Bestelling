@@ -1,8 +1,10 @@
+/*zorgt voor de netheid bij de randen :)*/
 html, body {
     margin: 0px;
     padding: 0px;
 }
 
+/*header container eigenschappen*/
 .containerHEADER {
     width: 100%;
     height: 200px;
@@ -10,24 +12,28 @@ html, body {
     text-align: center;
 }
 
+/*form container eigenschappen*/
 .containerFORM {
     width: 100%;
     height: 600px;
     background-color: #cbcbcb;
 }
 
+/*inner form eigenschappen, form gaat in het midden staan*/
 .containerFORMINNER {
     width: 250px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/*footer container eigenschappen*/
 .containerFOOTER {
     width: 100%;
     height: 166px;
     background-color: rgb(76, 112, 179);
 }
 
+/*footer header eigenschappen, de tekst in footer*/
 .footerHEADER {
     font-family: 'Permanent Marker', cursive;
     margin: 0px;
@@ -38,6 +44,7 @@ html, body {
     color: white;
 }
 
+/* footer overzicht eigenschappen, overzicht pagina tekst word hiermee aangepast*/
 .footerOVERZICHT {
     font-family: 'Permanent Marker', cursive;
     margin: 0px;
@@ -48,6 +55,7 @@ html, body {
     color: white;
 }
 
+/*bedankt container, voor de bedankt pagina*/
 .containerBEDANKT {
     width: 100%;
     height: 1000px;
@@ -55,6 +63,7 @@ html, body {
     text-align: center;
 }
 
+/*bedankt tekst voor bedankt pagina*/
 .bedanktTEXT {
     margin: 0px;
     padding: 0px;
@@ -64,6 +73,7 @@ html, body {
     color: white;
 }
 
+/*header tekst eigenschappen*/
 .headerCLASS {
     margin: 0px;
     padding: 0px;

@@ -1,4 +1,5 @@
 <?php
+    //start sessie voor overgang informatie
     session_start();
     error_reporting(E_ERROR | E_PARSE);
 ?>
@@ -16,14 +17,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     </head>
     <body>
+        <!-- header informatie -->
         <div class="containerHEADER">
             <h1 class="headerCLASS">Yigit's Bangers</h1>
         </div>
+        <!-- container voor de form en bij behorende css -->
         <div class="containerFORM">
             <div class="containerFORMINNER">
                 <form action="index.php" id="formID" method="get">
 
-                    <!-- User input, waarde -->
+                    <!-- User input, waarde. Zorgt voor rode gloei als de input veld leeg is -->
                     <?php
                         echo ('<label>Voornaam: </label><br>');
                         if (isset($_GET['voornaam'])){
@@ -170,8 +173,7 @@
 
 <?php
 
-    $voorraad = ["Frikandel","Kapsalon", "Salar burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
-
+    //bestellen functie zorgt voor redirect als input velden niet leeg zijn
     function bestellen() {
         echo ("debug test");
 
@@ -182,7 +184,7 @@
         }
     }
 
-    //controlle
+    //controlleV1, niet gebruikt maar zit wel in de systeem
     function controlleVoorraad($bestelling){
         $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
         foreach ($bestelling as $key => $value){
@@ -196,7 +198,7 @@
             }
         }
     }
-    //controlle V2
+    //controlle V2 zorgt voor de checkup of sessie input wel in de voorraad zit.
     function controlleVoorraadV2() {
         $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
         if (!in_array($_SESSION["gerecht"], $voorraad) || !in_array($_SESSION["dranken"], $voorraad)) {
@@ -204,13 +206,13 @@
                 . $voorraad[0] . ", " . $voorraad[1] . ", " . $voorraad[2] . ", " . $voorraad[3] . ", " . $voorraad[4]
                 . ", " . $voorraad[5] . ", " . $voorraad[6] . ", " . $voorraad[7] . ", " . $voorraad[8] . ", " . $voorraad[9] . ", " . $voorraad[10];
         }
-
         else if (in_array($_SESSION["gerecht"], $voorraad) && in_array($_SESSION["gerecht"], $voorraad)) {
             bestellen();
         }
 
     }
 
+    //als button word geklikt dan controllevoorraadv2 word actief
     if (isset($_GET["submit"])) {
         controlleVoorraadV2();
     }

@@ -14,6 +14,7 @@ function bababoey() {
     }
 }
 
+//redirect van button bestellen en anuleren
 document.getElementById("bestelID").onclick = function () {
     location.href = "bedanktpagina.html";
 };
