@@ -1,6 +1,8 @@
 <?php
     //sessie start altijd van te voren zodat informatie kan worden doorgegeven. O.a user input en gekozen eten/drinken
     session_start();
+    //error warnings willen we niet, hiervoor word dit gebruikt om dit te ignoren
+    error_reporting(E_ERROR | E_PARSE);
 ?>
 <!DOCTYPE html>
 <html lang="nl">

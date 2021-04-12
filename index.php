@@ -1,6 +1,7 @@
 <?php
-    //start sessie voor overgang informatie
+    //sessie start altijd van te voren zodat informatie kan worden doorgegeven. O.a user input en gekozen eten/drinken
     session_start();
+    //error warnings willen we niet, hiervoor word dit gebruikt om dit te ignoren
     error_reporting(E_ERROR | E_PARSE);
 ?>
 
@@ -184,7 +185,7 @@
         }
     }
 
-    //controlleV1, niet gebruikt maar zit wel in de systeem
+    //controlleV1, niet gebruikt maar zit wel uitgeschreven
     function controlleVoorraad($bestelling){
         $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
         foreach ($bestelling as $key => $value){
@@ -214,6 +215,7 @@
 
     //als button word geklikt dan controllevoorraadv2 word actief
     if (isset($_GET["submit"])) {
-        controlleVoorraadV2();
+        bestellen();
+        //controlleVoorraadV2();
     }
 ?>
