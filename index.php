@@ -25,13 +25,13 @@
         <!-- container voor de form en bij behorende css -->
         <div class="containerFORM">
             <div class="containerFORMINNER">
-                <form action="index.php" id="formID" method="get">
+                <form action="index.php" id="formID" method="post">
 
                     <!-- User input, waarde. Zorgt voor rode gloei als de input veld leeg is -->
                     <?php
                         echo ('<label>Voornaam: </label><br>');
-                        if (isset($_GET['voornaam'])){
-                            if($_GET['voornaam'] == ""){
+                        if (isset($_POST['voornaam'])){
+                            if($_POST['voornaam'] == ""){
                                 echo('<input style="border-color: red" type="text" id="vnaam" name="voornaam" placeholder="Mark"> <br>');
                             }
                             else {
@@ -42,8 +42,8 @@
                             echo ('<input type="text" id="vnaam" name="voornaam" placeholder="Mark"> <br>');
                         }
                         echo ('<label>Achternaam: </label><br>');
-                        if (isset($_GET['achternaam'])){
-                            if($_GET['achternaam'] == ""){
+                        if (isset($_POST['achternaam'])){
+                            if($_POST['achternaam'] == ""){
                                 echo('<input style="border-color: red" type="text" id="anaam" name="achternaam" placeholder="Rutte"> <br>');
                             }
                             else {
@@ -54,8 +54,8 @@
                             echo ('<input type="text" id="anaam" name="achternaam" placeholder="Rutte"> <br>');
                         }
                         echo ('<label>Email: </label><br>');
-                        if (isset($_GET['email'])){
-                            if($_GET['email'] == ""){
+                        if (isset($_POST['email'])){
+                            if($_POST['email'] == ""){
                                 echo('<input style="border-color: red" type="email" id="mail" name="email" placeholder="voorbeeld@outlook.com"> <br>');
                             }
                             else {
@@ -66,8 +66,8 @@
                             echo ('<input type="email" id="mail" name="email" placeholder="voorbeeld@outlook.com"> <br>');
                         }
                         echo ('<label>Straat naam: </label><br>');
-                        if (isset($_GET['straatnaam'])){
-                            if($_GET['straatnaam'] == ""){
+                        if (isset($_POST['straatnaam'])){
+                            if($_POST['straatnaam'] == ""){
                                 echo('<input style="border-color: red" type="text" id="snaam" name="straatnaam" placeholder="straatnaam"> <br>');
                             }
                             else {
@@ -78,8 +78,8 @@
                             echo ('<input type="text" id="snaam" name="straatnaam" placeholder="straatnaam"> <br>');
                         }
                         echo ('<label>Huisnummer: </label><br>');
-                        if (isset($_GET['huisnummer'])){
-                            if($_GET['huisnummer'] == ""){
+                        if (isset($_POST['huisnummer'])){
+                            if($_POST['huisnummer'] == ""){
                                 echo('<input style="border-color: red" type="number" id="hnummer" name="huisnummer" placeholder="50"> <br>');
                             }
                             else {
@@ -90,8 +90,8 @@
                             echo ('<input type="number" id="hnummer" name="huisnummer" placeholder="50"> <br>');
                         }
                         echo ('<label>Postcode: </label><br>');
-                        if (isset($_GET['postcode'])){
-                            if($_GET['postcode'] == ""){
+                        if (isset($_POST['postcode'])){
+                            if($_POST['postcode'] == ""){
                                 echo('<input minlength = "6" maxlength="6" style="border-color: red" type="text" id="pcode" name="postcode" placeholder="bv. 1234AA"> <br>');
                             }
                             else {
@@ -102,8 +102,8 @@
                             echo ('<input minlength = "6" maxlength="6" type="text" id="pcode" name="postcode" placeholder="bv. 1234AA"> <br>');
                         }
                         echo ('<label>Woonplaats: </label><br>');
-                        if (isset($_GET['woonplaats'])){
-                            if($_GET['woonplaats'] == ""){
+                        if (isset($_POST['woonplaats'])){
+                            if($_POST['woonplaats'] == ""){
                                 echo('<input style="border-color: red" type="text" id="wplaats" name="woonplaats" placeholder="Nijmegen"> <br>');
                             }
                             else {
@@ -114,8 +114,8 @@
                             echo ('<input type="text" id="wplaats" name="woonplaats" placeholder="Nijmegen"> <br>');
                         }
                         echo ('<label>Telefoon nummer: </label><br>');
-                        if (isset($_GET['telefoonNummer'])){
-                            if($_GET['telefoonNummer'] == ""){
+                        if (isset($_POST['telefoonNummer'])){
+                            if($_POST['telefoonNummer'] == ""){
                                 echo('<input style="border-color: red" type="text" id="tnummer" name="telefoonNummer" placeholder="06 12345678"> <br>');
                             }
                             else {
@@ -130,8 +130,8 @@
                     <!-- Gerechten -->
                     <label>Gerechten: </label><br>
                     <select name="gerecht">
-                        <option value="Gehaktbal">Gehaktbal</option>
                         <option value="Frikandel">Frikandel</option>
+                        <option value="Gehaktbal">Gehaktbal</option>
                         <option value="Kapsalon" >Kapsalon</option>
                         <option value="Salar Burger" >Salar burger</option>
                         <option value="Mexicano" >Mexicano</option>
@@ -148,17 +148,38 @@
                         <option value="Fanta">Fanta</option>
                         <option value="Melk">Melk</option>
                     </select><br>
-
                 </form>
                 <button form="formID" value="submit" onclick="bababoey()" name="submit">submit</button>
-
-                <!-- <button onclick="bababoey()" name="submit">Submit</button> -->
-                <!-- <input onclick="bababoey()" type="submit" name="submit"> -->
 
                 <!-- Reset button voor debug -->
                 <button><a href="index.php">Reset</a></button>
                 <!-- Overzicht anchor voor debug -->
                 <a href="overzicht.php">overzicht</a>
+
+                <!-- Zorgt ervoor dat als geklikt en komt niet overeen in voorraad dan word de stuk tekst onder de submit button laten zien -->
+                <?php
+                    //controlle V2 zorgt voor de checkup of sessie input wel in de voorraad zit.
+                    function controlleVoorraadV2() {
+                        $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
+                        $_SESSION = ["voornaam" => $_POST["voornaam"],"achternaam" => $_POST["achternaam"],"email" => $_POST["email"],"straatnaam" => $_POST["straatnaam"],"huisnummer" => $_POST["huisnummer"],"postcode" => $_POST["postcode"],"woonplaats" => $_POST["woonplaats"],"telefoonNummer" => $_POST["telefoonNummer"],"gerecht" => $_POST["gerecht"],"dranken" => $_POST["dranken"]];
+
+                        if (!in_array($_SESSION["gerecht"], $voorraad) || !in_array($_SESSION["dranken"], $voorraad)) {
+                            echo "Deze drank of gerecht is niet meer verkrijgbaar, sorry voor het ongemak! Dit is wel verkrijgbaar: "
+                                . $voorraad[0] . ", " . $voorraad[1] . ", " . $voorraad[2] . ", " . $voorraad[3] . ", " . $voorraad[4]
+                                . ", " . $voorraad[5] . ", " . $voorraad[6] . ", " . $voorraad[7] . ", " . $voorraad[8] . ", " . $voorraad[9] . ", " . $voorraad[10];
+                            session_destroy();
+                        }
+                        else if (in_array($_SESSION["gerecht"], $voorraad) && in_array($_SESSION["dranken"], $voorraad)) {
+                            bestellen();
+                        }
+                    }
+
+                    //als button word geklikt dan controllevoorraadv2 word actief
+                    if (isset($_POST["submit"])) {
+                        controlleVoorraadV2();
+                    }
+                ?>
+
             </div>
         </div>
 
@@ -173,14 +194,10 @@
 </html>
 
 <?php
-
-    //bestellen functie zorgt voor redirect als input velden niet leeg zijn
+    //bestellen functie zorgt voor redirect als input velden niet leeg zijn, het is een beetje overbodig om
+    //deze functie te hebben, omdat je dit ook in de controle voorraad kan zetten
     function bestellen() {
-        echo ("debug test");
-
-        $_SESSION = ["voornaam" => $_GET["voornaam"],"achternaam" => $_GET["achternaam"],"email" => $_GET["email"],"straatnaam" => $_GET["straatnaam"],"huisnummer" => $_GET["huisnummer"],"postcode" => $_GET["postcode"],"woonplaats" => $_GET["woonplaats"],"telefoonNummer" => $_GET["telefoonNummer"],"gerecht" => $_GET["gerecht"],"dranken" => $_GET["dranken"]];
-
-        if(!empty($_GET["voornaam"]) && !empty($_GET["achternaam"]) && !empty($_GET["email"]) && !empty($_GET["straatnaam"]) && !empty($_GET["huisnummer"]) && !empty($_GET["postcode"]) && !empty($_GET["woonplaats"]) && !empty($_GET["telefoonNummer"]) ) {
+        if(!empty($_POST["voornaam"]) && !empty($_POST["achternaam"]) && !empty($_POST["email"]) && !empty($_POST["straatnaam"]) && !empty($_POST["huisnummer"]) && !empty($_POST["postcode"]) && !empty($_POST["woonplaats"]) && !empty($_POST["telefoonNummer"]) ) {
             header('location: overzicht.php');
         }
     }
@@ -198,24 +215,5 @@
                 }
             }
         }
-    }
-    //controlle V2 zorgt voor de checkup of sessie input wel in de voorraad zit.
-    function controlleVoorraadV2() {
-        $voorraad = ["Frikandel","Kapsalon", "Salar Burger", "Mexicano", "Druif", "Water", "Chocolade melk", "Fristi", "Cola", "Fanta", "Melk"];
-        if (!in_array($_SESSION["gerecht"], $voorraad) || !in_array($_SESSION["dranken"], $voorraad)) {
-            echo "Deze drank of gerecht is niet meer verkrijgbaar, sorry voor het ongemak! Dit is wel verkrijgbaar: "
-                . $voorraad[0] . ", " . $voorraad[1] . ", " . $voorraad[2] . ", " . $voorraad[3] . ", " . $voorraad[4]
-                . ", " . $voorraad[5] . ", " . $voorraad[6] . ", " . $voorraad[7] . ", " . $voorraad[8] . ", " . $voorraad[9] . ", " . $voorraad[10];
-        }
-        else if (in_array($_SESSION["gerecht"], $voorraad) && in_array($_SESSION["gerecht"], $voorraad)) {
-            bestellen();
-        }
-
-    }
-
-    //als button word geklikt dan controllevoorraadv2 word actief
-    if (isset($_GET["submit"])) {
-        bestellen();
-        //controlleVoorraadV2();
     }
 ?>

@@ -54,6 +54,7 @@
 </html>
 
 <?php
+
     //klanten worden ge emailed en de eigenaar ook als bestellen word geklikt, als anuleren word geklikt dan gaat hij terug naar bestel pagina
     $messageKlant = "Hallo, \r\n
                     Bij deze is hier uw bestelling met alle bij behorende informatie: \r\n
@@ -85,17 +86,12 @@
                     "\r\n Met vriendelijke groet, " .
                     "\r\n Yigit's Bangers team";
     $to = $_SESSION["email"];
-    if (isset($_GET["bestellen"])) {
+    if (isset($_POST["bestellen"])) {
         mail($to, "Bestelling Yigit's Bangers", $messageKlant);
         echo ("asdasd");
         mail("yigitfindik024@gmail.com", "bestelling", $messageBedrijf);
     }
-    if (isset($_GET["anuleren"])) {
+    if (isset($_POST["anuleren"])) {
         header('location: index.php');
     }
-
-    //debug
-    var_dump($_SESSION);
-    //var_dump(bestelling);
-
 ?>
